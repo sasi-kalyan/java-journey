@@ -1,12 +1,22 @@
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 public class HashSetExample {
     /*
+
+          Set<E>  <<interface>>
+          |
+          | <- implements
+          |
+          HashSet<E> <<class>>
+
         - HashSet implements Set interface.
         - HashSet is backed up by the HashTable (usually HashMap<K, V>)
         - HashSet doesn't allow duplicates
         - HashSet doesn't maintain any order
         - HashSet allows null values, if we insert more than one null value it overrides
+        - HashSet is not-synchronized, we can explicitly make it synchronized.
 
      */
 
@@ -54,5 +64,8 @@ Load Factor Of HashSet =  ----------------------------
         //clear
         partyGuest.clear();
         System.out.println("Is Empty? "+ partyGuest.isEmpty());
+
+        //this way we can make it synchronized.
+        Set<Integer> syncSet = Collections.synchronizedSet(new HashSet<>());
     }
 }

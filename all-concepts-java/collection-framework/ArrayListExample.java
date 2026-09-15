@@ -1,10 +1,21 @@
 import java.util.*;
 
 /*
+        ArrayList: is the class that implements the List<T> interface, which stores the ordered collection of elements
+        allows null elements as well.
+
+            List<T>  <<inteface>>
+            |
+            |  <- implements
+            |
+            ArrayList<T> <<class>>
+
         - ArrayList can grow and shrink dynamically.
         - It maintains the insertion order
         - Fast random access, slow in insertions in the middle
         - ArrayList is non-synchronized
+
+        => extends AbstractList, implements List, RandomAccess, Clonable, Serializable.
  */
 
 public class ArrayListExample {
@@ -40,6 +51,14 @@ public class ArrayListExample {
         //iterating the arraylist
         for(String i: anime){
             System.out.print(i+" ");
+        }
+        System.out.println();
+
+        //Using iterator we can loop the elements inside list
+        Iterator<String> itstr = anime.iterator();
+
+        while(itstr.hasNext()){
+            System.out.print(itstr.next() + " ");
         }
         System.out.println();
 

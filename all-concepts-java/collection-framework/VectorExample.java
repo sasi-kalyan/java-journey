@@ -4,10 +4,18 @@ public class VectorExample {
     /*
             Vector: Implements the List, Like ArrayList it also maintains the insertions order
             - It is thread-safe arraylist
-            - as it is synchronized it gives poor performance
+            - since every method inside the vector is synchronized
+            in nature, in multithreaded environment it gives poor performance.
+
+
+
+            => extends AbstractList<E>
+                implements List<E>, RandomAccess, Cloneable, java.io.Serializable
      */
 
     public static void main(String[] args) {
+
+
         Vector<String> vector = new Vector<>();  //it creates vector with default cap of 10
 
         Vector<Integer> invec = new Vector<>(10, 5); //inital capacity: 10, increments by 5
@@ -31,6 +39,12 @@ public class VectorExample {
 
         //capacity of the vector
         System.out.println("capactiy of the vector: "+ vector.capacity());
+
+        //size of the vector
+        System.out.println("vector size: " + vector.size());
+
+        //isempty method
+        System.out.println("is vector empty ? " + vector.isEmpty());
 
 
     }

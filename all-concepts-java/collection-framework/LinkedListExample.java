@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class LinkedListExample {
@@ -5,9 +6,17 @@ public class LinkedListExample {
     /*
             LinkedList:
             - LinkedList is the linear data structure just like arrays, but elements would not store in contiguous
-              memory locations like arrays, random memory locations allocates for each node.
+              memory locations like arrays, random memory locations allocates for each node, ecah node have the address
+              to its neighbouring node.
+
+              List<T>  <<inteface>>
+              |
+              LinkedList<T>  <<class>>
+
             - It also dynamically grow and shrink
             - Fast insertions/ deletions from both ends but slow in random access
+
+            => AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable
      */
     public static void main(String[] args) {
         LinkedList<String> anime = new LinkedList<>();
@@ -44,5 +53,16 @@ public class LinkedListExample {
         anime.removeFirst();
         anime.removeLast();
         System.out.println("after removal of first and last: "+ anime);
+
+        //Iterator in LinkedlIst
+        Iterator<String> itstr = anime.iterator();
+
+        //LinkedList collection works on fail-fast iterator.
+        while (itstr.hasNext()){
+            //anime.remove("Attack On Titan");   //java.util.ConcurrentModificationException
+            System.out.print(itstr.next() + " ");
+        }
+
+        System.out.println();
     }
 }
