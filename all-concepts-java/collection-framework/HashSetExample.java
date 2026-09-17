@@ -4,12 +4,29 @@ import java.util.Set;
 
 public class HashSetExample {
     /*
+         HashSet
+            |
+            ----> HashMap
 
-          Set<E>  <<interface>>
-          |
-          | <- implements
-          |
-          HashSet<E> <<class>>
+        transient HashMap<E,Object> map;
+
+        // Dummy value to associate with an Object in the backing Map
+        static final Object PRESENT = new Object();
+
+        -- Default capacity of the hashset internally is 16, because
+           hashmap create table of capacity 16 because
+
+           conceptually --> bucket = hash % capacity
+           bucket of the element  = hash & (capacity - 1)
+
+        hashCode()
+			↓
+		Find Bucket
+
+		equals()
+			↓
+		Find Object
+
 
         - HashSet implements Set interface.
         - HashSet is backed up by the HashTable (usually HashMap<K, V>)

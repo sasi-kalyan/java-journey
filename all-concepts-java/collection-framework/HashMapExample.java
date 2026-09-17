@@ -3,6 +3,23 @@ import java.util.*;
 public class HashMapExample {
     public static void main(String[] args) {
 
+        /*
+            HashMap: is the key-value pair collection.
+
+            HashMap is basically Array + LinkedList + Red Black Trees
+
+            transient Node<K,V>[] table;
+
+   class Node<K,V>{
+
+    int hash;
+    K key;
+    V value;
+
+    Node<K,V> next;
+   }
+
+         */
         HashMap<Integer, String> map = new HashMap<>();
 
         map.put(1, "Naruto");
