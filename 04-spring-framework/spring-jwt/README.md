@@ -24,7 +24,17 @@ signature=Sign(base64url(header) + "." + base64url(payload), key)
 Final Token would be like:
 JWT=base64url(header)+"."+base64url(payload)+"."+base64url(signature)
 ---------------------------------------------------------------------------
+Base64Url is encoding, not encryption.
 
+JWT Is Usually Signed, Not Encrypted
+Huge interview point.
+
+Signed JWT (JWS): Integrity + authenticity.
+Encrypted JWT (JWE): Confidentiality (payload hidden).
+Most real-world auth tokens are signed (JWS), not encrypted.
+So payload can be decoded by anyone with the token.
+
+Never place secrets in JWT payload (passwords, private keys, raw PII if avoidable).
 
 Standard Claims (Know These Cold)
 
@@ -57,4 +67,25 @@ Interview-friendly answer:
 Internal simple system: HS256 can work.
 Multi-service or external consumers: RS256/ES256 is often preferred.
 
+
+Algorithms: HS256 vs RS256 (Very Common Interview Topic)
+HS256 (HMAC, symmetric):
+
+Same secret for signing and verification.
+Simpler.
+Riskier in distributed systems because verifiers need signing secret too.
+RS256 (RSA, asymmetric):
+
+Private key signs, public key verifies.
+Better separation of concerns.
+Good for microservices, third-party verification, key rotation via JWKS.
+Interview-friendly answer:
+
+Internal simple system: HS256 can work.
+Multi-service or external consumers: RS256/ES256 is often preferred.
+
 ![img.png](img.png)
+
+JWT is often called stateless , but logout/revocation introduces state.
+
+JWT is a compact token format carrying claims in three parts: header, payload, signature. In most systems, it is signed (JWS), not encrypted, so payload is readable but tamper-evident. APIs must verify signature and validate claims like exp, iss, and aud on every request. Access tokens should be short-lived; refresh tokens are used to mint new access tokens and must be protected and rotated. JWT works well for distributed systems and microservices, especially with asymmetric keys like RS256 and key rotation via JWKS. The major risks are weak validation, insecure storage, long-lived tokens, and poor revocation strategy.

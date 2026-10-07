@@ -432,6 +432,21 @@ public class ObjectBasedStreamProblems {
 
         System.out.println("unique skills: "+ uniqueSkills);
 
-        ;
+
+        HashMap<String, Integer> pkmap = new HashMap<>();
+        pkmap.put("ABC", 1);
+        pkmap.put("DCE", 2);
+        pkmap.put("SER", 3);
+        pkmap.put("TRE", 4);
+        pkmap.put("KPR", 5);
+        pkmap.put("REW", 6);
+
+        System.out.println(pkmap);
+
+        List<String> kpmap = new ArrayList<>(Arrays.asList("ABC", "DCE", "SRE"));
+
+        kpmap.stream().map(e -> pkmap.getOrDefault(e, -1)).filter(idx -> idx >= 0).forEach(
+                System.out::println
+        );
     }
 }
