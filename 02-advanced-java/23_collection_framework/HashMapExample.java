@@ -57,5 +57,17 @@ public class HashMapExample {
         Collection vals = map.values();
         System.out.println("all values: "+ vals);
 
+
+        String str = "DataType";
+        HashMap<String, Integer> tmpMap = new HashMap<>();
+
+        tmpMap.put(str, 1);
+        tmpMap.put(str.toUpperCase(), 1);
+        tmpMap.put(str.toLowerCase(), 1);
+
+        System.out.println(tmpMap.getOrDefault("Datatype", -1));
+
+        System.out.println(tmpMap);
+
     }
 }

@@ -73,8 +73,12 @@ public class ExecutorServiceTypesExample2 {
 
         System.out.println("scheduled thread pool");
 
-        scheduledThreadPool.schedule(()->{
-            System.out.println("Scheduled Task Running");
-        }, 2, TimeUnit.SECONDS);
+//        scheduledThreadPool.schedule(()->{
+//            System.out.println("Scheduled Task Running");
+//        }, 2, TimeUnit.SECONDS);
+
+        scheduledThreadPool.schedule(() -> {
+            System.out.println("scheduled task running");
+        }, 1, TimeUnit.SECONDS);
     }
 }

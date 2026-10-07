@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 /*
+    Comparable is an interface which is the part of java.lang.Comparable, where the object itself defines
+    how it should be compared.
     Comparable is used for the Natural Sorting
     Comparable comes from the package java.lang.Comparable
     Comparable is an interface it contains single method compareTo
@@ -30,9 +32,14 @@ class Student implements Comparable<Student>{
                 '}';
     }
 
+//    @Override
+//    public int compareTo(Student o) {
+//        return this.rollNo - o.rollNo;
+//    }
+
     @Override
     public int compareTo(Student o) {
-        return this.rollNo - o.rollNo;
+        return this.marks - o.marks;
     }
 }
 
