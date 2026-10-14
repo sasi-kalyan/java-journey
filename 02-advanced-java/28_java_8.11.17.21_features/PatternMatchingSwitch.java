@@ -4,9 +4,11 @@ public class PatternMatchingSwitch {
 
         Object str = "hello";
 
-        switch (str){
+        Object num2 = 1;
+
+        switch (num2){
             case String s -> System.out.println("string object");
-            case Integer i -> System.out.println("interger object");
+            case Integer i when i < 10 -> System.out.println("interger object, less than 10");
             case Float f -> System.out.println("float object");
             default -> throw new IllegalStateException("Unexpected value: " + str);
         }
