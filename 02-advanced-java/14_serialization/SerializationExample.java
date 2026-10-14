@@ -8,14 +8,18 @@ class Person implements Serializable {
     //Fields
     private String name;
     private int age;
+    private double salary;
+//    private int yoe;
 
     //the fields which are marked as transient would not serializable
     private transient String password;
 
     //Constructor
-    public Person(String name, int age, String password) {
+    public Person(String name, int age, double salary/*, int yoe*/, String password) {
         this.name = name;
         this.age = age;
+        this.salary = salary;
+//        this.yoe = yoe;
         this.password = password;
     }
 
@@ -48,6 +52,8 @@ class Person implements Serializable {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", salary=" + salary +
+//                ", yoe=" + yoe +
                 ", password='" + password + '\'' +
                 '}';
     }
@@ -56,7 +62,7 @@ class Person implements Serializable {
 public class SerializationExample {
     public static void main(String[] args) {
         //Create person object
-        Person person = new Person("kalyan", 23, "Hello@123");
+        Person person = new Person("kalyan", 23, 12345,"Hello@123");
 
         try{
             FileOutputStream fos = new FileOutputStream("logs\\per.ser");

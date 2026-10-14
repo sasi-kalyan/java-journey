@@ -22,6 +22,7 @@ class Parent{
 
 class Child extends Parent{
     //the child class can give its own implementation
+    // the overriding method should not be more restrictive thatn the parent class method, if so, it would throw the error
     @Override
     public void method(int val){
         super.method(100);  //we can call the parent class method using super keyword

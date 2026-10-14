@@ -1,6 +1,5 @@
 public class ClassA implements InterfaceExample{
 
-    @Override
     public void method2() {
         System.out.println("implemented method");
     }

@@ -12,6 +12,22 @@
     represent the feilds, blocks or variables that belongs to the class rather specific object
     or instance.
  */
+
+class QA{
+
+    static void method(){
+        System.out.println("this is QA method (parent static)");
+    }
+}
+
+class RA extends QA{
+
+
+    static void method(){
+        System.out.println("this is RA method (child static");
+    }
+}
+
 public class StaticExample {
     public static int val;
 
@@ -30,6 +46,10 @@ public class StaticExample {
     }
 
     public static void main(String[] args) {
+
+        QA qa = new RA();
+        qa.method();
+
         StaticExample obj = new StaticExample();
         StaticExample obj1 = new StaticExample();
 

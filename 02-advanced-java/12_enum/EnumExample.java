@@ -7,6 +7,27 @@ enum Status{
     CLOSED
 }
 
+interface TestInterface{
+
+    void print();
+}
+
+enum Role implements TestInterface{
+    ADMIN,
+    USER,
+    ;
+
+
+    @Override
+    public void print() {
+        System.out.println("this is test interface");
+    }
+}
+
+enum SingletonClass{
+    INSTANCE;
+}
+
 public class EnumExample {
     public static void main(String[] args) {
 
@@ -20,6 +41,12 @@ public class EnumExample {
 
         int sum = nums.stream().reduce(0, (a,b) -> (a+b));
         System.out.println(sum);
+
+        Role.ADMIN.print();
+
+        SingletonClass singletonClass1 = SingletonClass.INSTANCE;
+        SingletonClass singletonClass2 = SingletonClass.INSTANCE;
+        System.out.println("is both objects equal? " + (singletonClass1 == singletonClass2));
 
     }
 }
