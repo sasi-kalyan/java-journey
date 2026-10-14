@@ -1,5 +1,8 @@
 package practice;
 
+import com.sun.security.jgss.GSSUtil;
+import jdk.nio.mapmode.ExtendedMapMode;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -63,6 +66,7 @@ public class EmployeeQuestions {
         List<Employee> employees = List.of(
 
                 new Employee(1L, "John", "IT", 75000, 28, "Male"),
+                new Employee(1L, "Alex", "IT", 75000, 28, "Male"),
                 new Employee(2L, "Sarah", "HR", 65000, 32, "Female"),
                 new Employee(3L, "David", "Finance", 85000, 40, "Male"),
                 new Employee(4L, "Emma", "IT", 95000, 30, "Female"),
@@ -79,6 +83,7 @@ public class EmployeeQuestions {
                 new Employee(15L, "Henry", "HR", 68000, 37, "Male")
         );
 
+        /*
         //System.out.println("List of all employees: " + employees);
 
         //Find all IT employees.
@@ -173,5 +178,108 @@ public class EmployeeQuestions {
 
         System.out.println("department wise max salary: " + deptWiseMaxSal);
 
+
+        //Find the employee with second highest salary
+
+        Optional<String> secHightestSal = employees.stream()
+                .sorted(Comparator.comparingInt(Employee::getSalary).reversed())
+                .map(Employee::getName).skip(1).limit(1).findFirst();
+
+        System.out.println(
+                "second hightest salary: " + secHightestSal
+        );
+
+        */
+
+        Map<Long, String> empIdNameMap = employees.stream()
+                .collect(Collectors.toMap(
+                        (Employee::getId),
+                        Employee::getName,
+                        (oldVal, newVal) -> newVal
+                ));
+
+
+        System.out.println("employees id -> name: " + empIdNameMap);
+
+        Map<String, List<String>> deptGroup = employees.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Employee::getDepartment,
+                                Collectors.mapping(
+                                        Employee::getName,
+                                        Collectors.toList()
+                                )
+                        )
+                );
+
+        System.out.println(deptGroup);
+
+
+        Map<String, Long> deptEmpCount = employees.stream().collect(
+                Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.counting()
+                )
+        );
+
+        System.out.println("department wise emp count: " + deptEmpCount);
+
+
+        Map<String, Integer> deptWiseSumSal = employees.stream().
+                collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.summingInt(Employee::getSalary)
+                ));
+
+        System.out.println("department wise salary sum: " + deptWiseSumSal);
+
+        Map<String, Double> deptWiseAvgSal = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.averagingDouble(Employee::getSalary)
+                ));
+
+        System.out.println("department wise salary avg: " + deptWiseAvgSal);
+
+        DoubleSummaryStatistics stats = employees.stream()
+                .collect(
+                        Collectors.summarizingDouble(
+                                Employee::getSalary
+                        )
+                );
+
+        System.out.println(stats);
+
+        //Find highest salary employee
+
+        Optional<Employee> highEmp = employees.stream()
+                .collect(
+                        Collectors.maxBy(
+                                Comparator.comparingInt(
+                                        Employee::getSalary
+                                )
+                        )
+                );
+
+        System.out.println("highest salary employee: " + highEmp.get());
+
+        String name = employees.stream().max(Comparator.comparingInt(Employee::getSalary)).map(Employee::getName).get();
+        System.out.println("name of highest salaried employee: " + name);
+
+
+        Map<String, Optional<String>> highEmpPerDept =
+                employees.stream().collect(
+                        Collectors.groupingBy(
+                                Employee::getDepartment,
+                                Collectors.collectingAndThen(
+                                        Collectors.maxBy(
+                                                Comparator.comparingInt(Employee::getSalary)
+                                        ),
+                                        emp -> emp.map(Employee::getName)
+                                )
+                        )
+                );
+
+        System.out.println("max sal emp per dept: " + highEmpPerDept);
     }
 }

@@ -4,7 +4,7 @@ public class StringInterning {
         String s1 = "Hello"; //added to string pool
         String s2 = "Hello"; //reuses the reference which is already there
 
-        System.out.println(s1 == s2);
+        System.out.println("is s1 == s2 ? " + s1 == s2);
 
         String s3 = new String("Naruto");
         String s4 = s3.intern();

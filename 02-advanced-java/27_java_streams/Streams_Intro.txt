@@ -1,3 +1,11 @@
+Before streams:
+the code is so complex to write the logic for simple processing like
+Manual code generation
+Complex processing logic
+nested structures
+
+streams - are the declarative programming style.
+stream - is not a datastructure it is a data processing pipeline
 
 Stream API is the popular concept in java which introduced functional type of programming language
 we can perform the functional type operations on collections.
@@ -11,10 +19,17 @@ multiple operations without modifying the original data.
 
 We have two kinds of operations in streams:
 
+Source
+|
+Intermediate Operations -> are the operations that produces another stream (Stream-> stream)
+|
+Terminal Operation
+
 1. Intermediate Operations:
     - which are lazy in nature, nothing executes immediately
     filter -> filters the stream based on condition
     map    -> transforms the stream
+    flatMap -> flattens the stream (or nested structures to linear structure)
     distinct -> removes the duplicates in stream
     sorted    -> sorts the stream
     peek     -> mainly used to debugging purpose.

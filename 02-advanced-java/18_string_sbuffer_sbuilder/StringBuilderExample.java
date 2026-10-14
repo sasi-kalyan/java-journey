@@ -1,7 +1,7 @@
 public class StringBuilderExample {
 
     /*
-        String Builder is identical to string buffer except that the methods are not synnchronized, so that it makes
+        String Builder is identical to string buffer except that the methods are not synchronized, so that it makes
         it faster in operations but it is not thread safe, use it in single threaded environments.
      */
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class StringBuilderExample {
 
         System.out.println("initial capacity of string builder: " + sb.capacity());
         sb.append("HELLO WORLD");
-        System.out.println("after appennd, capacity: " + sb.capacity());
+        System.out.println("after append, capacity: " + sb.capacity());
 
         //charAt, setCharAt
         System.out.println("0 char in string: " + sb.charAt(0));

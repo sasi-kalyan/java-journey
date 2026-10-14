@@ -1,5 +1,18 @@
 public class StringExample {
     /*
+            String is the immutable class, it is not a primitive data type.
+
+            Java has seperate memory called SCP (string constant pool)
+            the singnificane is to prevent the heap memeory wastage , reusable area, improves the peformance.
+
+            String is immutable in nature because
+
+            Reason-1: security
+            Reason-2: String pool
+            Reason-3: Thread safe
+            Reason-4: Hashcode caching
+
+
             String is an immutable object which cannot be modified , if we try to change
             it creates the new object in th heap.
 
