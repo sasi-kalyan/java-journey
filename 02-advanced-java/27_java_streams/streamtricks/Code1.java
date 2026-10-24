@@ -266,19 +266,25 @@ public class Code1 {
 
         System.out.println("Total frequency of charactes in the string : " + freq3);
 
-        Optional<Character> find_non_repeat_char = str1.chars()
-                .mapToObj(c -> (char) c)
-                .collect(
-                        Collectors.groupingBy(
-                                c -> c,
-                                LinkedHashMap::new,
-                                Collectors.counting()
+        String find_non_repeat_char =
+                str1.chars().mapToObj(c -> String.valueOf(
+                        (char)c
+                )).filter(
+                        w -> {
+                            int idx = str1.indexOf(w);
+                            int lidx = str1.lastIndexOf(w);
+
+                            return idx == lidx;
+                        }
+                ).collect(
+                        Collectors.toMap(
+                                s -> s,
+                                s -> str1.indexOf(s),
+                                (o, n) -> o,
+                                LinkedHashMap::new
                         )
-                ).entrySet()
-                .stream().
-                filter(e -> e.getValue() == 1)
-                .map(e -> e.getKey())
-                .findFirst();
+                ).entrySet().stream().limit(1).map(e -> e.getKey()).findFirst().toString();
+
 
         System.out.println("First non-repeating character: " + find_non_repeat_char);
 
