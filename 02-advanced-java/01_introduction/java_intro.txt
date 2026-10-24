@@ -1,0 +1,47 @@
+
+Java is the programming language developed by sun microsystems later it was acquired by
+oracle corporation in 1991. it was developed by james gossling and patrick noughton
+
+features of java programming language:
+- simple
+- object oriented prog -> inheritance, abstraction, ecapsulation, polymorphism
+- platform independent -> the byte code makes the java prog platform independent
+- better exception handling
+- no complex concepts like pointers, or memeory management, operator overloading
+- dynamic and flexible
+- can support distribited systems dev
+
+JVM vs JRE vs JDK
+
+JVM stands for java virtual machine that provides runtime env to execute the bytecode.
+it is responsible for security and memory mangement and garbage collection.
+it is platform dependent.
+
+JRE stands for java runtime env which provides a virtual env to run the java appliations
+it contains jvm and rt (runtime lib)
+
+JDK is the software package which contains the jre and debuggers, compilers, docs
+
+java virtual machine architecure:
+
+class loader -> that loads the class in to the mem/method area.
+it have phases of loading
+1. loading
+2. linking
+    -> verification
+    -> preparation
+    -> resolution
+3. initialization
+
+runtime data areas
+heap -> where obj's stores
+stack -> thread frames, temp var's
+pc registers -> tracks of current instrsuctions
+
+exection engine
+interpreter -> which executes the line by line code often slow in nature.
+jit compiler -> is a special compiler that complies and holds the frequenly
+executed code segments for future execution
+this mechanism is used to improve the compilation optimization and performance improvements.
+garbage collection(gc) -> to reclaim the memory from unused objects.
+

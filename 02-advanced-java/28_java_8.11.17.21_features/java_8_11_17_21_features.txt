@@ -1,0 +1,47 @@
+
+Java 8: is the functional programming revolution.
+
+Lambdas: the foundational segments of the functional programming.
+it is the anonymous function that takes the parameters (optional) and
+computes some logic init.
+
+Runnable task = () -> System.out.println("task running");
+
+Function interfaces: foundational segments of the lambda expressions usage.
+the special interface that contains only one abstract method inside it, multiple
+default and static methods can exits.
+
+Builtin functional interfaces are:
+
+Predicate<T> - test() - Boolean
+Function<T, R> - apply() - R
+Supplier<T> - get() - T
+Consumer<T> - accept() - void
+BiFunction<T t, U u, R r> - apply(T t, U u)
+UnaryOperator<T> - apply(t t)
+BinaryOperator<T t1, T t2> - apply(T t1, T t2)
+
+Method references:
+these are the syntactic representations/ shorthand notations for lambda expressions
+these method refrences offer readabilty of the code.
+
+// 1. Static method reference
+Function<String, Integer> parse = Integer::parseInt;
+
+// 2. Instance method of a particular object
+String greeting = "Hello";
+Supplier<Integer> len = greeting::length;
+
+// 3. Instance method of an arbitrary object of a particular type
+Function<String, Integer> len2 = String::length;
+
+// 4. Constructor reference
+Supplier<ArrayList<String>> listMaker = ArrayList::new;
+
+
+Optional<T> class:
+==================
+To handle the nullpointer exceptions
+Optional<String> name = Optional.ofNullable(getName());
+String result = name.map(String::toUpperCase).orElse("UNKNOWN");
+
