@@ -1,6 +1,30 @@
 import java.util.Arrays;
 import java.util.List;
 
+
+/*
+        Enum is the enumeration in Java, a special type that represents the fixed set of constants.
+
+        enum Day {
+            MONDAY,
+            TUESDAY,
+            WEDNESDAY
+        }
+
+final class Day extends Enum<Day> {
+
+    public static final Day MONDAY =
+            new Day("MONDAY", 0);
+
+    public static final Day TUESDAY =
+            new Day("TUESDAY", 1);
+
+    private Day(String name, int ordinal) {
+        super(name, ordinal);
+    }
+}
+ */
+
 enum Status{
     IN_PROGRESS,
     OPEN,
@@ -12,10 +36,16 @@ interface TestInterface{
     void print();
 }
 
+
+//enum can implement the interfaces, enum cannot extends the class because it already extends Enum internally
 enum Role implements TestInterface{
     ADMIN,
     USER,
     ;
+
+    Role(){
+
+    }
 
 
     @Override
