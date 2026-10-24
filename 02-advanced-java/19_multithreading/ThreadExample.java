@@ -3,26 +3,25 @@
 public class ThreadExample{
 	
 	public static void main(String[] args){
-		
-		Thread thread1 = new Thread(() -> {
-			
-			
-			System.out.println("inside running thread..." + Thread.currentThread().getName()+ " " +Thread.currentThread().getState());
-			
-			System.out.println("thread is going to sleep for 2 sec...");
+
+		Thread thread = new Thread(() -> {
+
+			System.out.println("Thread " + Thread.currentThread().getName() + " is under execution, current state: " + Thread.currentThread().getState());
+
 			try{
-				Thread.sleep(2000);
-			}catch(InterruptedException e){
-				System.out.println("thread execution interuppted");
+				System.out.println("Thread " + Thread.currentThread().getName()+" is going to TIME_WAITING state");
+				Thread.sleep(10);
+				System.out.println("Thread " + Thread.currentThread().getName() + " state is: " + Thread.currentThread().getState());
+			}catch (InterruptedException e){
+				System.out.println("Thread terminated due to an exception");
 			}
-		}, "THREAD1");
-		
-		System.out.println("Main thread execution started...");
-		
-		
-		System.out.println("thread1 - is going to execute...");
-		System.out.println("current state of the thread : " + thread1.getState());
-		thread1.start();
-		System.out.println("thread execution ended...");
+
+		}, "main_thread");
+
+
+		System.out.println("Initial state of the thread " + Thread.currentThread().getName() + " -" + Thread.currentThread().getState());
+		thread.start(); //starts the thread.
+		thread.start();
+		System.out.println("After thread completed execution, state: " + Thread.currentThread().getName()+" - "+ Thread.currentThread().getState());
 	}
 }
