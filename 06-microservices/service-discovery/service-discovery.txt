@@ -1,0 +1,19 @@
+
+service discovery is a mechanism where the services finds each other dynamically/automatically 
+without hardcoding the hostnames/ip's. we maintain a central manager that manages/and let the 
+service know (who is running where).
+
+ <Netflix> ----> Eureka ---->(maintained by) spring cloud.
+ 
+2 components in Eureka configuration.
+
+Eureka server - that is central manager that tracks who is running where.
+this is the registry that stores the host, port and status of the servvices runnning where.
+
+@EnableEurekaServer
+- application.yml , we need to give some configs
+
+Eureka client - is a service that registers itself in the eureka server, that sends the hearbeat 
+about is health and all. 
+@EnableDiscoveryClient
+- application.yml , we need to give some configs
