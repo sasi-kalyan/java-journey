@@ -1,4 +1,4 @@
-## SPRING SECURITY
+Spring Security
 =================================================
 - Spring security is the authentication framework that adds security layer to webapps and APIs by handling authentication, authorization 
 and session security context management.
