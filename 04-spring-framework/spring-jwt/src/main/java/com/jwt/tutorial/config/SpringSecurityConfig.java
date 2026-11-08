@@ -38,7 +38,9 @@ public class SpringSecurityConfig {
                                 "/api/public/**", "/h2-console/**"
                         ).permitAll()
                         .requestMatchers("/api/auth/**")
-                        .permitAll()
+                                .hasRole("USER")
+                                .anyRequest()
+                                .authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
