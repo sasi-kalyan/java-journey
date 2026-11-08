@@ -5,20 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
-@EnableWebSecurity
-//it imports WebSecurityConfiguration.class, HttpSecurityConfiguration.clss etc...
-public class SpringSecurityConfig {
-
-    /*
+/*
 these are all the filters which gets added when we build the HttpSecurity builder object.
 SecurityContextHolderFilter
 LogoutFilter
@@ -27,7 +18,12 @@ RequestCacheAwareFilter
 AnonymousAuthenticationFilter
 ExceptionTranslationFilter
 AuthorizationFilter
-     */
+*/
+
+@Configuration
+//it imports WebSecurityConfiguration.class, HttpSecurityConfiguration.class etc.
+@EnableWebSecurity
+public class SpringSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -35,39 +31,17 @@ AuthorizationFilter
     }
 
     @Bean
-    public UserDetailsService userDetailsService(){
-
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER")
-                .build();
-
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(user, admin);
-    }
-
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(
                 csrf -> csrf.disable()
         ).authorizeHttpRequests(
                 auth -> auth.requestMatchers(
-                        "/pub/**"
+                        "/api/user/**"
                 ).permitAll()
-                        .requestMatchers("/auth/**")
-                        .hasRole("ROLE_USER")
+                        .requestMatchers("/api/admin/**")
+                        .hasRole("ADMIN")
                         .anyRequest()
-                        .permitAll()
-                        .requestMatchers("/auth/**")
-                        .hasRole("ROLE_ADMIN")
-                        .anyRequest()
-                        .permitAll()
+                        .authenticated()
         ).httpBasic(Customizer.withDefaults());
 
         return http.build();
