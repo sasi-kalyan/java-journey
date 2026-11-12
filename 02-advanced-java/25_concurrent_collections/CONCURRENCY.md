@@ -1,5 +1,6 @@
 
 Concurrency:
+==
 concurrency is a concept where we need to manage the multiple tasks simultaneously or same time.
 
 Single CPU Core:
@@ -9,6 +10,7 @@ Single CPU Core:
          C  C  C  C
 
 Parallelism:
+==
 it the concept where multiple tasks run simultaneously independently.
 
 Multi CPU Cores
@@ -18,14 +20,21 @@ BBBBBBB
 CCCCCCC
 
 Multithreading
+==
 is a concept where we can create multi-threads in the env, to utilze the maximum CPU cores, and resulting
 concurrency and paralleism in the system.
 
 Concurrent Collections in JAVA:
 java.util.concurrent;
 
-ConcurrentHashMap - is a concurrent collection that stores the key, value pairs inside it.
+ConcurrentHashMap
+==
+is a concurrent collection that stores the key, value pairs inside it.
 it uses the bucket-level locking mechanism inside it for read/write operations in the map.
+
+ConcurrentHashMap is a thread-safe hash table that achieves high concurrency by partitioning the data 
+(so locks are only held on small portions of the table, not the whole map), using CAS (Compare-And-Swap) operations for lock-free paths, 
+and volatile reads for lock-free get()
 
 the segment/bucket level locking offers the advantage of high concurrency and performance of
 the data processing inside the map.
