@@ -6,7 +6,7 @@ public class HashSetExample {
     /*
          HashSet
             |
-            ----> HashMap
+            ----> HashMap  (under-the-hood hashmap is the real worker for hashset)
 
         transient HashMap<E,Object> map;
 
@@ -29,7 +29,6 @@ public class HashSetExample {
 
 
         - HashSet implements Set interface.
-        - HashSet is backed up by the HashTable (usually HashMap<K, V>)
         - HashSet doesn't allow duplicates
         - HashSet doesn't maintain any order
         - HashSet allows null values, if we insert more than one null value it overrides
@@ -46,9 +45,15 @@ public class HashSetExample {
         3. Each guest has unique id (hashcode)
         4. We will decide room number based on the ID.
 
-                          Number of element in HashSet
-Load Factor Of HashSet =  ----------------------------
-                              Size of the HashSet
+                                      Number of element in HashSet
+            Load Factor Of HashSet =  ----------------------------
+                                          Size of the HashSet
+
+
+         Why equals and hashcode matters a lot?
+         ======================================
+
+
 
      */
     public static void main(String[] args) {

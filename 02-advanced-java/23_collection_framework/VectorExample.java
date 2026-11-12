@@ -3,18 +3,15 @@ import java.util.Vector;
 public class VectorExample {
     /*
             Vector: Implements the List, Like ArrayList it also maintains the insertions order
-            - It is thread-safe arraylist
+            - It is thread-safe arraylist by default
             - since every method inside the vector is synchronized
-            in nature, in multithreaded environment it gives poor performance.
-
-
+              in nature, in multithreaded environment it gives poor performance (only useful in single-threaded env)
 
             => extends AbstractList<E>
                 implements List<E>, RandomAccess, Cloneable, java.io.Serializable
      */
 
     public static void main(String[] args) {
-
 
         Vector<String> vector = new Vector<>();  //it creates vector with default cap of 10
 

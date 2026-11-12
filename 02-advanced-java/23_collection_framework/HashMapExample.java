@@ -11,7 +11,8 @@ public class HashMapExample {
     public static void main(String[] args) {
 
         /*
-            HashMap: is the datastructure that stores the key-value pairs using hashing.
+            HashMap: is the data-structure that stores the key-value pairs using hashing to achieve O(1) time complexity
+            for get, put and remove operations.
 
             Internally, hashmap can be described as array of bucket / bucket array
 
@@ -33,11 +34,15 @@ public class HashMapExample {
             By default the initial capacity = 16, loadFactor = 0.75, threshold = 12 (once we add 13th element the whole
             hashmap resized and rehashes the keys in the hashmap).
 
-            ------------------------   ---------------------------
-            |                      |   |                         |
-            |  [hash, k,v, nxt] => |   | [hash, k,v, nxt] => ... | ....so on (initially 16)
-            |                      |   |                         |
-            ------------------------   ---------------------------
+            ---------------------------   ---------------------------
+            |                         |   |                         |
+            |  [hash, k,v, nxt] =>... |   | [hash, k,v, nxt] => ... | ....so on (initially 16)
+            |                         |   |                         |
+            ---------------------------   ---------------------------
+
+            How put(k,v) really works?
+            ==========================
+
 
             STEP-1: why Java doesn't just use key.hashCode() directly
 
@@ -53,7 +58,7 @@ public class HashMapExample {
             Step 2: Bucket index via bitwise AND, not modulo
             int index = (table.length - 1) & hash;
 
-            Step 3: Collision handlding.
+            Step 3: Collision handling.
             TREEIFY_THRESHOLD = 8 — once a single bucket's chain reaches 8 nodes, it's converted to a red-black tree (O(log n) lookup instead of O(n)).
             MIN_TREEIFY_CAPACITY = 64 — if the table itself is still small, it resizes the whole table FIRST instead of treeifying (since growing the table often resolves the collision problem more cheaply than maintaining a tree).
             UNTREEIFY_THRESHOLD = 6 — shrinks back to a linked list if removals bring the count back down.

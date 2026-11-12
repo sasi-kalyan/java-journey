@@ -6,15 +6,15 @@ public class LinkedListExample {
     /*
             LinkedList:
             - LinkedList is the linear data structure just like arrays, but elements would not store in contiguous
-              memory locations like arrays, random memory locations allocates for each node, ecah node have the address
-              to its neighbouring node.
+              memory locations like arrays, random memory locations allocates for each node, each node have the address
+              to its neighbouring node. [it is the doubly linked list implementation actually]
 
               List<T>  <<inteface>>
               |
               LinkedList<T>  <<class>>
 
             - It also dynamically grow and shrink
-            - Fast insertions/ deletions from both ends but slow in random access
+            - Fast insertions/ deletions from both ends but slow in random/element access
 
             => AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable
      */

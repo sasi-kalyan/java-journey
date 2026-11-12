@@ -10,10 +10,11 @@ import java.util.*;
             |
             ArrayList<T> <<class>>
 
-        - ArrayList can grow and shrink dynamically.
+        - ArrayList can grow and shrink dynamically. (it's a resizable array)
         - It maintains the insertion order
         - Fast random access, slow in insertions in the middle
         - ArrayList is non-synchronized
+        - We can use array list for fast accessing of elements/ more heavy-read workloads.
 
         => extends AbstractList, implements List, RandomAccess, Clonable, Serializable.
  */
