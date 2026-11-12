@@ -7,7 +7,7 @@ public class InterruptExample {
             while (!Thread.currentThread().isInterrupted()){
 
                 System.out.println("running..." + "interrupt flag = " + Thread.currentThread().isInterrupted());
-                Thread.interrupted();
+                //Thread.interrupted();
             }
 
             System.out.println("stopped." + " because interrupt flag = " + Thread.currentThread().isInterrupted());
@@ -17,7 +17,7 @@ public class InterruptExample {
         thread.start();
 
         try{
-            Thread.sleep(20);
+            Thread.sleep(2000);
         }catch (InterruptedException e){
             System.out.println("main thread exited due to exception");
         }

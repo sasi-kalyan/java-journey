@@ -4,6 +4,8 @@ public class ThreadExample{
 	
 	public static void main(String[] args){
 
+
+		//using lambda expression , we can create threads.
 		Thread thread = new Thread(() -> {
 
 			System.out.println("Thread " + Thread.currentThread().getName() + " is under execution, current state: " + Thread.currentThread().getState());
@@ -17,7 +19,6 @@ public class ThreadExample{
 			}
 
 		}, "main_thread");
-
 
 		System.out.println("Initial state of the thread " + Thread.currentThread().getName() + " -" + Thread.currentThread().getState());
 		thread.start(); //starts the thread.

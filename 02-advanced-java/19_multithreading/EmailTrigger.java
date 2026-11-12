@@ -8,6 +8,7 @@ class EmailSender implements Runnable{
         this.message = message;
     }
 
+    //this is the actual task
     @Override
     public void run() {
         System.out.println(Thread.currentThread().getName() + "sending email to" + recipient);
@@ -37,6 +38,9 @@ public class EmailTrigger {
 
         for(int i=0; i< recipients.length ; i++){
             EmailSender sender = new EmailSender(recipients[i], message);
+
+            //this is the thread creation process, ultimately it's isolates the task and it's execution, so that's why runnable is
+            // preferred.
             threads[i] = new Thread(sender, "Email Worker - "+(i+1));
 
             threads[i].start();

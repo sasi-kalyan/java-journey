@@ -21,7 +21,7 @@ class Restaurant{
 		
 		if(!foodReady){
 			try{
-				wait();  //wait indefinetely
+				wait();  //customer thread --> waits in-definitely
 			}catch(Exception e){
 			
 			}	
@@ -39,12 +39,12 @@ public class WaitNotifyExample{
 		Restaurant restaurant = new Restaurant();
 		
 		Thread customer = new Thread( () -> {
-			restaurant.orderFood();
+			restaurant.orderFood();   // customer thread wait() --> has been called, lock release on the object, and lock acquired by chef thread
 		}, "Customer");
 		
 		
 		Thread chef = new Thread(() -> {
-			restaurant.cookFood();
+			restaurant.cookFood();   // lock acquired --> once fishes, notify() is been called to continue the customer thread.
 		}, "Chef");
 		
 		try{
